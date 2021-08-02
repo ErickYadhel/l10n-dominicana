@@ -465,3 +465,12 @@ class AccountMove(models.Model):
         )
         for invoice in cancelled_invoices:
             invoice.l10n_do_cancellation_type = invoice.cancellation_type
+
+    @api.onchange("l10n_latam_document_number")
+    def _advice_warning_ncf(self):
+        res = {}
+        for seq in self:
+            ncf_warning = seq.l10n_latam_sequence_id.warning_ncf
+            if seq.l10n_latam_document_number == ncf_warning:
+                res['warning'] = {'title': _('Warning'), 'message': _('Alerta NCF Proximo agotarse.')}
+            return res

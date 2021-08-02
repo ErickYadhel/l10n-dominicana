@@ -11,6 +11,7 @@
                         <field name="name" readonly="True" string="Sequence"/>
                         <field name="number_next_actual" string="Next Number"/>
                         <field name="expiration_date" string="Expiration Date"/>
+                        <field name="warning_ncf" string="Warning Date"/>
                         <field name="id" invisible="1"/>
                     </tree>
                 </field>
