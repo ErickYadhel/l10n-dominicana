@@ -23,6 +23,7 @@
                 <!-- Company info -->
                 <div class="col-6" t-if="is_l10n_do_invoice" name="invoice_partner_address">
                     <!--Ordenando las celdas-->
+<!--                    <h3 style="color:red;" t-if="o.state == 'cancel'">Cancelada</h3>-->
                     <br/>
                     <br/>
                         <t t-set="vat_len" t-value="len(o.partner_id.vat) if o.partner_id.vat else 0"/>
@@ -81,7 +82,8 @@
                 <!-- Fiscal info -->
                 <div class="col-6">
                     <h2>
-                        <span t-field="o.l10n_latam_document_type_id.report_name"/>
+                        <span t-if="o.state == 'draft' and o.state == 'posted'" t-field="o.l10n_latam_document_type_id.report_name"/>
+                        <span t-if="o.state == 'cancel'">Factura Cancelada</span>
                     </h2>
                     <strong t-if="o.l10n_latam_document_number">
                         <t t-if="o.is_ecf_invoice">e-NCF:</t>
