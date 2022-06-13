@@ -21,6 +21,8 @@ class ResCompany(models.Model):
         "to have sales through offline mobile devices such as "
         "sales with Handheld, enter others.",
     )
+    l10n_do_ncf_exp_date = fields.date(
+    )
 
     def _localization_use_documents(self):
         """ Dominican localization uses documents """
